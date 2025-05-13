@@ -15,6 +15,7 @@ from cog import Path
 from node import Node
 from weights_downloader import WeightsDownloader
 from urllib.error import URLError
+import hashlib
 
 
 class ComfyUI:
@@ -382,3 +383,36 @@ class ComfyUI:
                         node["class_type"] = "LoraLoaderFromURL"
                         node["inputs"]["url"] = inputs["lora_name"]
                         del node["inputs"]["lora_name"]
+
+            # Handle LoRA Stacker nodes
+            elif node.get("class_type") == "LoRA Stacker":
+                inputs = node.get("inputs", {})
+                # Look for numbered lora_name fields (lora_name_1, lora_name_2, etc.)
+                for key in list(inputs.keys()):
+                    if key.startswith("lora_name_") and isinstance(inputs[key], str):
+                        value = inputs[key]
+                        if value.startswith(("http://", "https://")):
+                            # Verify file extension is .safetensors
+                            if not value.lower().split("?")[0].endswith(".safetensors"):
+                                print(f"❌ Skipping LoRA from {value}: Only .safetensors files are supported")
+                                continue
+
+                            try:
+                                # Extract base filename without extension from URL
+                                url_without_params = value.split("?")[0]
+                                filename = os.path.basename(url_without_params)
+                                filename_without_extension = os.path.splitext(filename)[0]
+                                # Generate unique filename by combining the original name with a URL hash
+                                hashed_url = hashlib.md5(value.encode()).hexdigest()[:8]
+                                hashed_filename = f"{filename_without_extension}_{hashed_url}.safetensors"
+                                dest = "ComfyUI/models/loras/"
+
+                                self.weights_downloader.download_if_not_exists(
+                                    hashed_filename,
+                                    value,
+                                    dest
+                                )
+                                # Update the input to use the local hashed filename
+                                inputs[key] = hashed_filename
+                            except Exception as e:
+                                print(f"❌ Error downloading LoRA from {value}: {e}")
