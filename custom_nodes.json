@@ -265,5 +265,13 @@
   {
     "repo": "https://github.com/ostris/ComfyUI-Advanced-Vision",
     "commit": "a0d6e80"
+  },
+  {
+    "repo": "https://github.com/chflame163/ComfyUI_LayerStyle",
+    "commit": "c0fb64d"
+  },
+  {
+    "repo": "https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch",
+    "commit": "f165313"
   }
 ]
