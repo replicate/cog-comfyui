@@ -265,5 +265,9 @@
   {
     "repo": "https://github.com/ostris/ComfyUI-Advanced-Vision",
     "commit": "a0d6e80"
+  },
+  {
+    "repo": "https://github.com/shiimizu/ComfyUI-TiledDiffusion",
+    "commit": "a155b1b"
   }
 ]
