@@ -9,8 +9,8 @@
   },
   {
     "repo": "https://github.com/fofr/ComfyUI-Impact-Pack",
-    "commit": "9ad8f85",
-    "notes": "Fork of https://github.com/ltdrdata/ComfyUI-Impact-Pack which prevents automatic installation of dependencies"
+    "commit": "ac3668d",
+    "notes": "Fork of https://github.com/ltdrdata/ComfyUI-Impact-Pack which prevents automatic installation of dependencies. Updated to fix BooleanWidget2 compatibility issue with newer ComfyUI frontend versions."
   },
   {
     "repo": "https://github.com/ltdrdata/ComfyUI-Inspire-Pack",
