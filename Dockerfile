@@ -1,36 +1,36 @@
-# Dockerfile for ARM/Apple Silicon compatibility (slower build)
-FROM python:3.12-slim
+# Use the official PyTorch CPU image for Python 3.12.
+FROM pytorch/pytorch:2.3.1-cpu-py3.12
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV PYTHONUNBUFFERED=1
+# The PyTorch images already run as a non-root user (`torchuser`), so we don't need to create one.
+# They also set up a working directory at /workspace/
+WORKDIR /workspace/
 
+# Temporarily switch to the root user to install system packages.
+USER root
+
+# Install essential system dependencies.
 RUN apt-get update && apt-get install -y \
     git \
     ffmpeg \
     build-essential \
     curl \
     --no-install-recommends && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN useradd -m -u 1000 user
-USER user
-ENV HOME=/home/user
-WORKDIR $HOME/app
+# Install pget to a system-wide location.
+RUN curl -o /usr/local/bin/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" && \
+    chmod +x /usr/local/bin/pget
 
-COPY --chown=user:user . .
+# Copy your project files into the image and set correct ownership.
+COPY --chown=torchuser:torchuser . .
 
-RUN pip install --no-cache-dir --user -r requirements.txt
+# Switch back to the non-root user for all subsequent operations.
+USER torchuser
 
-ENV PATH="$HOME/.local/bin:$PATH"
-
-
-# Install pget - a useful utility.
-# We use sudo because the base image might not give write permissions to /usr/local/bin for torchuser.
-# A cleaner way is to install it to the user's local bin directory.
-RUN curl -o /tmp/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" && \
-    mkdir -p /home/torchuser/.local/bin && \
-    install /tmp/pget /home/torchuser/.local/bin/ && \
-    rm /tmp/pget
+# Install the remaining Python requirements.
+# This will be much faster because torch, torchvision, etc., are already in the base image.
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Pre-install all custom nodes.
 RUN python scripts/install_custom_nodes.py
