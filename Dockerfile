@@ -23,18 +23,26 @@ WORKDIR $HOME/app
 # Set the PATH before pip install.
 ENV PATH="$HOME/.local/bin:$PATH"
 
-# Copy ONLY requirements.txt to leverage caching.
+# --- CACHING AND SUBMODULE FIX ---
+
+# 1. First, copy only the files Git needs to resolve the submodules.
+COPY --chown=user:user .gitmodules .
+COPY --chown=user:user .git/config .git/config
+COPY --chown=user:user ComfyUI ComfyUI
+
+# 2. Now, initialize and download the submodule code inside the container.
+# This ensures ComfyUI's code is present regardless of the host state.
+RUN git submodule update --init --recursive
+
+# 3. Copy only the requirements file for pip caching.
 COPY --chown=user:user requirements.txt .
 
-# Install Python dependencies.
+# 4. Install Python dependencies. This layer will be cached.
 RUN pip install --no-cache-dir --user -r requirements.txt
 
-# Now copy the rest of your application code.
+# 5. Finally, copy the rest of your application code.
 COPY --chown=user:user . .
 
-# --- THIS IS THE CRUCIAL FIX ---
-# Initialize and update the Git submodules (like ComfyUI) inside the container.
-RUN git submodule update --init --recursive
 
 # Install pget utility.
 RUN curl -o /tmp/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" && \
