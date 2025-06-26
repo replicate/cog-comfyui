@@ -22,7 +22,7 @@ sleep 15
 
 # Execute the Python prediction script
 echo "Running prediction script..."
-python3 predict_docker.py "$@"
+python3 predict.py "$@"
 
 # Shut down the ComfyUI server
 echo "Prediction finished. Shutting down ComfyUI server..."
