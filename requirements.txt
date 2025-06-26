@@ -70,3 +70,5 @@ comfyui-embedded-docs
 simpleeval
 replicate
 cog
+loguru
+prettytable
