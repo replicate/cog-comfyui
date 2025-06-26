@@ -167,3 +167,87 @@ class Predictor(BasePredictor):
         return optimise_images.optimise_image_files(
             output_format, output_quality, self.comfyUI.get_files(output_directories)
         )
+
+if __name__ == "__main__":
+    import argparse
+    import sys
+
+    # This block makes the script runnable from the command line,
+    # mimicking how `cog predict` would call it.
+
+    parser = argparse.ArgumentParser(
+        description="Run a ComfyUI workflow from the command line."
+    )
+    # Re-define the arguments from the `predict` method for the command line.
+    parser.add_argument(
+        "--workflow_json",
+        type=str,
+        required=True,
+        help="The ComfyUI API workflow as a JSON string.",
+    )
+    # The original script expects an `input_file` argument, but your workflow
+    # doesn't use it. We'll make it optional and default to None.
+    parser.add_argument("--input_file", type=Path, default=None)
+    parser.add_argument("--return_temp_files", type=bool, default=False)
+    parser.add_argument("--output_format", type=str, default="webp")
+    parser.add_argument("--output_quality", type=int, default=80)
+    parser.add_argument("--randomise_seeds", type=bool, default=True)
+    parser.add_argument("--force_reset_cache", type=bool, default=False)
+    
+    # Add an argument for the final output path for Docker
+    parser.add_argument(
+        "--final_output_path",
+        type=str,
+        default="/app/final_outputs",
+        help="The directory inside the container where final images will be saved.",
+    )
+
+    args = parser.parse_args()
+
+    # --- Manually replicate the Cog setup/predict flow ---
+
+    # 1. Instantiate the Predictor class
+    predictor = Predictor()
+
+    # 2. Call the setup() method
+    # In our Docker setup, weights are pre-downloaded, so we pass None.
+    # The setup method will then start the ComfyUI server.
+    print("Running setup to start the server...")
+    predictor.setup(weights=None)
+    
+    # Give the server a moment to start
+    import time
+    time.sleep(10) # Wait for the server to be ready
+
+    # 3. Call the predict() method with the parsed arguments
+    print("Calling predict method...")
+    try:
+        outputs = predictor.predict(
+            workflow_json=args.workflow_json,
+            input_file=args.input_file,
+            return_temp_files=args.return_temp_files,
+            output_format=args.output_format,
+            output_quality=args.output_quality,
+            randomise_seeds=args.randomise_seeds,
+            force_reset_cache=args.force_reset_cache,
+        )
+        
+        # 4. Handle the output files
+        final_output_dir = Path(args.final_output_path)
+        if not final_output_dir.exists():
+            final_output_dir.mkdir(parents=True, exist_ok=True)
+
+        print("--- Copying final outputs ---")
+        for file_path in outputs:
+            if file_path.is_file():
+                shutil.copy(file_path, final_output_dir)
+                print(f"Copied {file_path.name} to {final_output_dir}")
+
+        print("\nPrediction successful. Outputs are in the mapped volume.")
+
+    except Exception as e:
+        print(f"An error occurred during prediction: {e}")
+        # Print traceback for more detail
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
