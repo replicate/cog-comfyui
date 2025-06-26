@@ -5,7 +5,7 @@ FROM python:3.12-slim
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
 
-# Install system dependencies as root.
+# Install system dependencies.
 RUN apt-get update && apt-get install -y \
     git \
     ffmpeg \
@@ -14,27 +14,37 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
-# Set the working directory.
-WORKDIR /app
+# Create a non-root user.
+RUN useradd -m -u 1000 user
+USER user
+ENV HOME=/home/user
+WORKDIR $HOME/app
 
-# --- Caching Optimization ---
-# First, copy ONLY the requirements file.
-COPY requirements.txt .
+# Set the PATH before pip install.
+ENV PATH="$HOME/.local/bin:$PATH"
 
-# Install Python packages system-wide as root.
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy ONLY requirements.txt to leverage caching.
+COPY --chown=user:user requirements.txt .
+
+# Install Python dependencies.
+RUN pip install --no-cache-dir --user -r requirements.txt
 
 # Now copy the rest of your application code.
-COPY . .
+COPY --chown=user:user . .
 
-# Install pget utility to a system-wide location.
-RUN curl -o /usr/local/bin/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" && \
-    chmod +x /usr/local/bin/pget
+# --- THIS IS THE CRUCIAL FIX ---
+# Initialize and update the Git submodules (like ComfyUI) inside the container.
+RUN git submodule update --init --recursive
+
+# Install pget utility.
+RUN curl -o /tmp/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" && \
+    install /tmp/pget $HOME/.local/bin/ && \
+    rm /tmp/pget
 
 # Pre-install all custom nodes.
 RUN python scripts/install_custom_nodes.py
 
-# Make the entrypoint script executable.
+# Make entrypoint script executable.
 RUN chmod +x scripts/run.sh
 
 # Define the entrypoint for the container.
