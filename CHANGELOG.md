@@ -1,3 +1,6 @@
+## 2025-06-26
+
+- [Add ComfyUI-BiRefNet-ZHO](https://github.com/ZHO-ZHO-ZHO/ComfyUI-BiRefNet-ZHO) custom node
 ## 2025-06-23
 
 - [Update ComfyUI to latest](https://github.com/comfyanonymous/ComfyUI/compare/f2289a1...ae0e7c4)
