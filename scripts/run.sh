@@ -1,5 +1,3 @@
-# lbbw-trikot-main/scripts/run.sh
-
 #!/bin/bash
 set -e
 
