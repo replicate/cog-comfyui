@@ -16,7 +16,6 @@ from node import Node
 from weights_downloader import WeightsDownloader
 from urllib.error import URLError
 
-
 class ComfyUI:
     def __init__(self, server_address):
         self.weights_downloader = WeightsDownloader()
@@ -41,7 +40,7 @@ class ComfyUI:
         print(f"Server started in {elapsed_time:.2f} seconds")
 
     def run_server(self, output_directory, input_directory):
-        command = f"python ./ComfyUI/main.py --output-directory {output_directory} --input-directory {input_directory} --disable-metadata"
+        command = f"python ./ComfyUI/main.py --cpu --output-directory {output_directory} --input-directory {input_directory} --disable-metadata"
 
         """
         We need to capture the stdout and stderr from the server process
@@ -49,6 +48,7 @@ class ComfyUI:
         then at the point where ComfyUI attempts to print it will throw a
         broken pipe error. This only happens from cog v0.9.13 onwards.
         """
+        print(f"[ComfyUI] Starting server with command: {command}")
         server_process = subprocess.Popen(
             command,
             shell=True,

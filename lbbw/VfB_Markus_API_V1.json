@@ -1,0 +1,155 @@
+{
+  "99": {
+    "inputs": {
+      "stitch": "top",
+      "feathering": 0,
+      "image_a": [
+        "324",
+        0
+      ],
+      "image_b": [
+        "160",
+        0
+      ]
+    },
+    "class_type": "Image Stitch",
+    "_meta": {
+      "title": "Image Stitch"
+    }
+  },
+  "156": {
+    "inputs": {
+      "number_of_faces": 1,
+      "scale_factor": 7,
+      "shift_factor": 0.45000000000000007,
+      "start_index": 0,
+      "max_faces_per_image": 50,
+      "aspect_ratio": "2:3",
+      "image": [
+        "323",
+        0
+      ]
+    },
+    "class_type": "AutoCropFaces",
+    "_meta": {
+      "title": "Auto Crop Faces"
+    }
+  },
+  "160": {
+    "inputs": {
+      "action": "crop to ratio",
+      "smaller_side": 0,
+      "larger_side": 0,
+      "target_width": 1000,
+      "target_height": 1500,
+      "scale_factor": 0,
+      "resize_mode": "any",
+      "side_ratio": "4:3",
+      "crop_pad_position": 0.5,
+      "pad_feathering": 20,
+      "all_szie_8x": "disable",
+      "all_size_16x": "disable",
+      "pixels": [
+        "231",
+        0
+      ]
+    },
+    "class_type": "ImageResizeTo8x",
+    "_meta": {
+      "title": "Image Resize to 8x"
+    }
+  },
+  "168": {
+    "inputs": {
+      "score": 0.9,
+      "image": [
+        "156",
+        0
+      ],
+      "alternative_image": [
+        "170",
+        0
+      ]
+    },
+    "class_type": "NSFWDetection",
+    "_meta": {
+      "title": "NSFWDetection"
+    }
+  },
+  "170": {
+    "inputs": {
+      "image": "CbEdjKUka5RAA-IadV5X82.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "230": {
+    "inputs": {
+      "prompt": "Portrait shot: Put the white soccer jersey on the man. Maintain all the small details of the soccer jersey including color and the red collar and red sleeve ends. A prominent, thick, vibrant red horizontal band stretches across the chest. Inside this band, the word \"STUTTGART\" is printed in bold, white, sans-serif capital letters.",
+      "aspect_ratio": "match_input_image",
+      "seed": 1891,
+      "output_format": "png",
+      "safety_tolerance": 2,
+      "force_rerun": false,
+      "input_image": [
+        "99",
+        0
+      ]
+    },
+    "class_type": "Replicate black-forest-labs/flux-kontext-pro",
+    "_meta": {
+      "title": "Replicate black-forest-labs/flux-kontext-pro"
+    }
+  },
+  "231": {
+    "inputs": {
+      "prompt": "The human is wearing a white t-shirt. Keep the pose of the human. No additional items of clothing such as scarves, vests or the like.",
+      "aspect_ratio": "match_input_image",
+      "seed": 1401,
+      "output_format": "png",
+      "safety_tolerance": 2,
+      "force_rerun": false,
+      "input_image": [
+        "168",
+        0
+      ]
+    },
+    "class_type": "Replicate black-forest-labs/flux-kontext-pro",
+    "_meta": {
+      "title": "Replicate black-forest-labs/flux-kontext-pro"
+    }
+  },
+  "321": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "230",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "323": {
+    "inputs": {
+      "image": "artificialcrafts_50_year_old_man_cheering_hawaii_shirt_and_beig_d859288d-dc03-4dde-b740-f50a94b83ee0.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "324": {
+    "inputs": {
+      "image": "1 (1).png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  }
+}
