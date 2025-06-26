@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-# --- NEW STEP: Prepare the input directory ---
-# Check if a host-mounted directory exists at /host_inputs
-# If it does, copy its contents to the application's input directory.
 HOST_INPUT_DIR="/host_inputs"
 APP_INPUT_DIR="/tmp/inputs"
 
@@ -17,12 +14,8 @@ if [ -d "$HOST_INPUT_DIR" ]; then
 else
   echo "No host inputs mounted at $HOST_INPUT_DIR. Proceeding..."
 fi
-# --- END OF NEW STEP ---
-
 
 echo "Running prediction script..."
-# The `if __name__ == "__main__":` block in predict.py will be executed.
-# It will call setup() which starts the server, then calls predict().
 python3 /app/predict.py "$@"
 
 echo "Prediction script finished."
