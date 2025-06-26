@@ -105,5 +105,15 @@
       "upload": "image"
     },
     "class_type": "LoadImage"
+  },
+  "336": {
+    "inputs": {
+      "filename_prefix": "final_jersey_image",
+      "images": [
+        "332",
+        0
+      ]
+    },
+    "class_type": "SaveImage"
   }
 }
