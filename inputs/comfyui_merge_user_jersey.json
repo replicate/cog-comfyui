@@ -1,0 +1,119 @@
+{
+  "156": {
+    "inputs": {
+      "face_margin": 1,
+      "face_score_threshold": 7.5,
+      "face_size_threshold": 0.45,
+      "max_faces": 0,
+      "bbox_expansion": 50,
+      "target_face_size": "2:3",
+      "image": [
+        "333",
+        0
+      ]
+    },
+    "class_type": "AutoCropFaces"
+  },
+  "160": {
+    "inputs": {
+      "method": "crop to ratio",
+      "x": 0,
+      "y": 0,
+      "width": 1000,
+      "height": 1500,
+      "feathering": 0,
+      "mode": "any",
+      "ratio": "4:3",
+      "scale_factor": 0.5,
+      "scale_steps": 20,
+      "crop_factor_mode": "disable",
+      "ratio_factor_mode": "disable",
+      "pixels": [
+        "231",
+        0
+      ]
+    },
+    "class_type": "ImageResizeTo8x"
+  },
+  "168": {
+    "inputs": {
+      "threshold": 0.1,
+      "image": [
+        "156",
+        0
+      ],
+      "alternative_image": [
+        "170",
+        0
+      ]
+    },
+    "class_type": "NSFWDetection"
+  },
+  "170": {
+    "inputs": {
+      "image": "filter.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage"
+  },
+  "231": {
+    "inputs": {
+      "prompt": "The human is wearing a white t-shirt. Keep the pose of the human. No additional items of clothing such as scarves, vests or the like.",
+      "style": "match_input_image",
+      "seed": 906,
+      "sampler": "randomize",
+      "output_format": "png",
+      "cfg": 2,
+      "save_output": false,
+      "input_image": [
+        "168",
+        0
+      ]
+    },
+    "class_type": "Replicate black-forest-labs/flux-kontext-pro"
+  },
+  "332": {
+    "inputs": {
+      "prompt": "Portrait shot: Put the white soccer jersey on the man. Maintain all the small details of the soccer jersey including color and the red collar and red sleeve ends. A prominent, thick, vibrant red horizontal band stretches across the chest. Inside this band, the word \"STUTTGART\" is printed in bold, white, sans-serif capital letters.",
+      "aspect_ratio": "9:16",
+      "seed": 1913,
+      "sampler": "randomize",
+      "output_format": "png",
+      "cfg": 2,
+      "save_output": false,
+      "input_image_1": [
+        "335",
+        0
+      ],
+      "input_image_2": [
+        "160",
+        0
+      ]
+    },
+    "class_type": "Replicate flux-kontext-apps/multi-image-kontext-pro"
+  },
+  "333": {
+    "inputs": {
+      "image": "guy.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage"
+  },
+  "335": {
+    "inputs": {
+      "image": "jersey.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage"
+  },
+  "336": {
+    "inputs": {
+      "filename_prefix": "final_jersey_image",
+      "images": [
+        "332",
+        0
+      ]
+    },
+    "class_type": "SaveImage"
+  }
+}

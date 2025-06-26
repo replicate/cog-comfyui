@@ -1,11 +1,11 @@
 build:
-  gpu: true
-  cuda: "12.1"
+  gpu: false
   system_packages:
     - ffmpeg
   python_version: "3.12"
   python_requirements: requirements.txt
   run:
+    - apt update && apt update
     - curl -o /usr/local/bin/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" && chmod +x /usr/local/bin/pget
     - pip install onnxruntime-gpu --extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/
 predict: "predict.py:Predictor"
