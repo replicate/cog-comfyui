@@ -94,14 +94,14 @@
   },
   "333": {
     "inputs": {
-      "image": "artificialcrafts_30_year_old_man_cheering_white_shirt_and_black_d1e198b9-a920-496d-8578-fbb0f491b70b.png",
+      "image": "guy.png",
       "upload": "image"
     },
     "class_type": "LoadImage"
   },
   "335": {
     "inputs": {
-      "image": "1 (1).png",
+      "image": "jersey.png",
       "upload": "image"
     },
     "class_type": "LoadImage"
