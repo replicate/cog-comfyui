@@ -1,4 +1,5 @@
 ## 2025-06-26
+- [Add ComfyUI-BiRefNet-ZHO](https://github.com/artificialcrafts/ComfyUI-BiRefNet-ZHO) custom node
 - [Add ComfyUI-BiRefNet](https://github.com/viperyl/ComfyUI-BiRefNet) custom node
 
 - [Add ComfyUI-BiRefNet-ZHO](https://github.com/ZHO-ZHO-ZHO/ComfyUI-BiRefNet-ZHO) custom node
