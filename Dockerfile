@@ -27,9 +27,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Now copy the rest of your application code.
 COPY . .
 
-# Initialize Git submodules (like ComfyUI).
-RUN git submodule update --init --recursive
-
 # Install pget utility to a system-wide location.
 RUN curl -o /usr/local/bin/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" && \
     chmod +x /usr/local/bin/pget
