@@ -1,0 +1,794 @@
+{
+  "id": "59b36570-02aa-4eea-860f-b30a4e7b9254",
+  "revision": 0,
+  "last_node_id": 335,
+  "last_link_id": 534,
+  "nodes": [
+    {
+      "id": 231,
+      "type": "Replicate black-forest-labs/flux-kontext-pro",
+      "pos": [
+        -392.8458251953125,
+        1676.362548828125
+      ],
+      "size": [
+        400,
+        232
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 386
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            388
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "mfrank0711/comfyui-replicate",
+        "ver": "f43aaa0ce7b2ac5f3fc1d4ab14f1a47f7ac8c5e5",
+        "Node name for S&R": "Replicate black-forest-labs/flux-kontext-pro",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "The human is wearing a white t-shirt. Keep the pose of the human. No additional items of clothing such as scarves, vests or the like.",
+        "match_input_image",
+        906,
+        "randomize",
+        "png",
+        2,
+        false
+      ]
+    },
+    {
+      "id": 247,
+      "type": "Note",
+      "pos": [
+        -1072.3182373046875,
+        614.2272338867188
+      ],
+      "size": [
+        462.3324890136719,
+        88
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Zufallsbilder aus 3 Bilder Ordnern werden reingeladen.\nBeim ersten Import die Pfade aktualisieren."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 246,
+      "type": "Note",
+      "pos": [
+        -348.8949890136719,
+        616.8063354492188
+      ],
+      "size": [
+        462.3324890136719,
+        88
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Der Scale Faktor ist entscheident. Umso kleiner der Wert, desto mehr wird ran gecroppt."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 160,
+      "type": "ImageResizeTo8x",
+      "pos": [
+        423.2337951660156,
+        1636.11669921875
+      ],
+      "size": [
+        270,
+        382
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 388
+        },
+        {
+          "name": "mask_optional",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            517
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-utils-nodes",
+        "ver": "6a82f96630aa4ad65a20aa2be747981ff4bb5424",
+        "Node name for S&R": "ImageResizeTo8x",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "crop to ratio",
+        0,
+        0,
+        1000,
+        1500,
+        0,
+        "any",
+        "4:3",
+        0.5,
+        20,
+        "disable",
+        "disable"
+      ]
+    },
+    {
+      "id": 238,
+      "type": "PreviewImage",
+      "pos": [
+        1371.92822265625,
+        870.856689453125
+      ],
+      "size": [
+        502.7730712890625,
+        1129.6746826171875
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 514
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 249,
+      "type": "Note",
+      "pos": [
+        -99.81906127929688,
+        2214.567138671875
+      ],
+      "size": [
+        462.3324890136719,
+        88
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Hier wird das Kleidungsstück der Person durch ein weißes Shirt ersetzt. Das ist essentiell, weil sonst Kleidungsstücke vom Originalbild auftauchen könnten."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 168,
+      "type": "NSFWDetection",
+      "pos": [
+        249.50698852539062,
+        846.083984375
+      ],
+      "size": [
+        270,
+        78
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 294
+        },
+        {
+          "name": "alternative_image",
+          "type": "IMAGE",
+          "link": 292
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            386
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-nsfw-detection",
+        "ver": "1f91d4ca52358337173c0710fcd8fea2b37c7397",
+        "Node name for S&R": "NSFWDetection",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        0.1
+      ]
+    },
+    {
+      "id": 156,
+      "type": "AutoCropFaces",
+      "pos": [
+        -244.00494384765625,
+        833.0836181640625
+      ],
+      "size": [
+        285.400390625,
+        198
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 533
+        }
+      ],
+      "outputs": [
+        {
+          "name": "face",
+          "type": "IMAGE",
+          "links": [
+            294
+          ]
+        },
+        {
+          "name": "output_1",
+          "type": "CROP_DATA",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-AutoCropFaces",
+        "ver": "b2139db9a8ffb4707832106a58f519bbd04e6118",
+        "Node name for S&R": "AutoCropFaces",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1,
+        7.5,
+        0.45000000000000007,
+        0,
+        50,
+        "2:3"
+      ]
+    },
+    {
+      "id": 323,
+      "type": "Note",
+      "pos": [
+        802.4215698242188,
+        1601.1546630859375
+      ],
+      "size": [
+        393.65472412109375,
+        135.2957000732422
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "CHILD",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Portrait shot: Put the white soccer jersey on the child. Maintain all the small details of the soccer jersey including color and the red collar and red sleeve ends. A prominent, thick, vibrant red horizontal band stretches across the chest. Inside this band, the word \"STUTTGART\" is printed in bold, white, sans-serif capital letters."
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 322,
+      "type": "Note",
+      "pos": [
+        801.8076782226562,
+        1424.2569580078125
+      ],
+      "size": [
+        393.65472412109375,
+        135.2957000732422
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "MAN",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Portrait shot: Put the white soccer jersey on the man. Maintain all the small details of the soccer jersey including color and the red collar and red sleeve ends. A prominent, thick, vibrant red horizontal band stretches across the chest. Inside this band, the word \"STUTTGART\" is printed in bold, white, sans-serif capital letters."
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 248,
+      "type": "Note",
+      "pos": [
+        226.36363220214844,
+        614.6836547851562
+      ],
+      "size": [
+        462.3324890136719,
+        88
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "NSFW Check. Wird ein Bild erkannt, wird dieses durch das Bild in Load Image ersetzt."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 332,
+      "type": "Replicate flux-kontext-apps/multi-image-kontext-pro",
+      "pos": [
+        795.0188598632812,
+        910.6314697265625
+      ],
+      "size": [
+        419.6988220214844,
+        252
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_image_1",
+          "type": "IMAGE",
+          "link": 534
+        },
+        {
+          "name": "input_image_2",
+          "type": "IMAGE",
+          "link": 517
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            514
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "mfrank0711/comfyui-replicate",
+        "ver": "b34ab1ad066bb0537ca91a1b094f41b79ab6dfdc",
+        "Node name for S&R": "Replicate flux-kontext-apps/multi-image-kontext-pro",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Portrait shot: Put the white soccer jersey on the man. Maintain all the small details of the soccer jersey including color and the red collar and red sleeve ends. A prominent, thick, vibrant red horizontal band stretches across the chest. Inside this band, the word \"STUTTGART\" is printed in bold, white, sans-serif capital letters.",
+        "9:16",
+        1913,
+        "randomize",
+        "png",
+        2,
+        false
+      ]
+    },
+    {
+      "id": 170,
+      "type": "LoadImage",
+      "pos": [
+        254.29734802246094,
+        1021.1355590820312
+      ],
+      "size": [
+        270.9074401855469,
+        326
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            292
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "filter.png",
+        "image"
+      ]
+    },
+    {
+      "id": 327,
+      "type": "Note",
+      "pos": [
+        -1211.16650390625,
+        818.4191284179688
+      ],
+      "size": [
+        295.99407958984375,
+        198.9377899169922
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Paths",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "E:\\Nextcloud\\ARTIFICIAL_CRAFTS\\03_Projects\\LBBW_x_VfB_JN\\01_Input\\People\\Child\n\nE:\\Nextcloud\\ARTIFICIAL_CRAFTS\\03_Projects\\LBBW_x_VfB_JN\\01_Input\\People\\Woman\n\nE:\\Nextcloud\\ARTIFICIAL_CRAFTS\\03_Projects\\LBBW_x_VfB_JN\\01_Input\\People\\Man\n\nE:\\Nextcloud\\ARTIFICIAL_CRAFTS\\03_Projects\\LBBW_x_VfB_JN\\01_Input\\Scene\n\nE:\\Nextcloud\\ARTIFICIAL_CRAFTS\\03_Projects\\LBBW_x_VfB_JN\\01_Input\\Shirt"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 284,
+      "type": "Note",
+      "pos": [
+        800.8554077148438,
+        1241.453369140625
+      ],
+      "size": [
+        393.65472412109375,
+        135.2957000732422
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "WOMAN",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Portrait shot: Put the white soccer jersey on the woman. Maintain all the small details of the soccer jersey including color and the red collar and red sleeve ends. A prominent, thick, vibrant red horizontal band stretches across the chest. Inside this band, the word \"STUTTGART\" is printed in bold, white, sans-serif capital letters."
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 335,
+      "type": "LoadImage",
+      "pos": [
+        -1531.8897705078125,
+        1486.57666015625
+      ],
+      "size": [
+        274.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            534
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "1 (1).png",
+        "image"
+      ]
+    },
+    {
+      "id": 333,
+      "type": "LoadImage",
+      "pos": [
+        -1535.5384521484375,
+        1089.697998046875
+      ],
+      "size": [
+        274.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            533
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "artificialcrafts_30_year_old_man_cheering_white_shirt_and_black_d1e198b9-a920-496d-8578-fbb0f491b70b.png",
+        "image"
+      ]
+    }
+  ],
+  "links": [
+    [
+      292,
+      170,
+      0,
+      168,
+      1,
+      "IMAGE"
+    ],
+    [
+      294,
+      156,
+      0,
+      168,
+      0,
+      "IMAGE"
+    ],
+    [
+      386,
+      168,
+      0,
+      231,
+      0,
+      "IMAGE"
+    ],
+    [
+      388,
+      231,
+      0,
+      160,
+      0,
+      "IMAGE"
+    ],
+    [
+      514,
+      332,
+      0,
+      238,
+      0,
+      "IMAGE"
+    ],
+    [
+      517,
+      160,
+      0,
+      332,
+      1,
+      "IMAGE"
+    ],
+    [
+      533,
+      333,
+      0,
+      156,
+      0,
+      "IMAGE"
+    ],
+    [
+      534,
+      335,
+      0,
+      332,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 2,
+      "title": "PICTURES",
+      "bounding": [
+        -1236.9110107421875,
+        735.1056518554688,
+        794.937744140625,
+        1401.68310546875
+      ],
+      "color": "#88A",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "AUTO CROP FACES",
+      "bounding": [
+        -413.02960205078125,
+        734.6375732421875,
+        589.1476440429688,
+        695.265869140625
+      ],
+      "color": "#88A",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "FLUX",
+      "bounding": [
+        736.5145874023438,
+        743.8916015625,
+        528.4934692382812,
+        1381.664306640625
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 6,
+      "title": "PREVIEW",
+      "bounding": [
+        1296.06396484375,
+        745.0527954101562,
+        663.7272338867188,
+        1378.2861328125
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 9,
+      "title": "SAFETY FILTER",
+      "bounding": [
+        209.22799682617188,
+        738.5123291015625,
+        491.63824462890625,
+        688.2505493164062
+      ],
+      "color": "#88A",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 10,
+      "title": "BLACK SHIRT FIX",
+      "bounding": [
+        -409.1142272949219,
+        1468.615234375,
+        1112.071533203125,
+        663.0751953125
+      ],
+      "color": "#88A",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.41772481694162655,
+      "offset": [
+        2222.369872009897,
+        -242.7250726110018
+      ]
+    },
+    "frontendVersion": "1.22.2",
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "groupNodes": {}
+  },
+  "version": 0.4
+}

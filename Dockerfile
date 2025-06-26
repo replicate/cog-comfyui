@@ -29,7 +29,7 @@ COPY --chown=user:user . .
 
 # Install Python requirements. This will be the longest step.
 # The warnings you saw should now be gone.
-RUN pip install --no-cache-dir --user -r requirements.txt
+RUN pip install --user -r requirements.txt
 
 # Install pget utility to the user's local bin directory.
 RUN curl -o /tmp/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" && \
