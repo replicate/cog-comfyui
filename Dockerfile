@@ -14,33 +14,23 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
-# Create a non-root user.
+# Create and switch to a non-root user.
 RUN useradd -m -u 1000 user
 USER user
 ENV HOME=/home/user
 WORKDIR $HOME/app
 
-# Set the PATH before pip install.
+# Set the PATH to include user's local bin.
 ENV PATH="$HOME/.local/bin:$PATH"
 
-# --- CACHING AND SUBMODULE FIX ---
-
-# 1. First, copy only the files Git needs to resolve the submodules.
-COPY --chown=user:user .gitmodules .
-COPY --chown=user:user .git/config .git/config
-COPY --chown=user:user ComfyUI ComfyUI
-
-# 2. Now, initialize and download the submodule code inside the container.
-# This ensures ComfyUI's code is present regardless of the host state.
-RUN git submodule update --init --recursive
-
-# 3. Copy only the requirements file for pip caching.
+# --- Caching Optimization ---
+# 1. Copy only the requirements file first.
 COPY --chown=user:user requirements.txt .
 
-# 4. Install Python dependencies. This layer will be cached.
+# 2. Install Python dependencies. This layer will be cached.
 RUN pip install --no-cache-dir --user -r requirements.txt
 
-# 5. Finally, copy the rest of your application code.
+# 3. Now copy the rest of your application, including the populated ComfyUI submodule directory.
 COPY --chown=user:user . .
 
 
@@ -52,7 +42,7 @@ RUN curl -o /tmp/pget -L "https://github.com/replicate/pget/releases/latest/down
 # Pre-install all custom nodes.
 RUN python scripts/install_custom_nodes.py
 
-# Make entrypoint script executable.
+# Make the entrypoint script executable.
 RUN chmod +x scripts/run.sh
 
 # Define the entrypoint for the container.
