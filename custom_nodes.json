@@ -4,7 +4,7 @@
     "commit": "5066bc3"
   },
   {
-    "repo": "https://github.com/shadel/ComfyUI-BiRefNet-ZHO",
+    "repo": "https://github.com/artificialcrafts/ComfyUI-BiRefNet-ZHO",
     "commit": "0f4879d",
     "notes": "Fork of https://github.com/ZHO-ZHO-ZHO/ComfyUI-BiRefNet which fixes util imports"
   }
