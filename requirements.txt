@@ -68,3 +68,5 @@ iopath
 alembic
 comfyui-embedded-docs
 simpleeval
+replicate
+cog
