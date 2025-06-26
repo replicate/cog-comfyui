@@ -20,19 +20,19 @@ USER user
 ENV HOME=/home/user
 WORKDIR $HOME/app
 
+# --- FIX: Set the PATH *before* running pip install ---
+# This ensures that any scripts installed by pip are immediately available.
+ENV PATH="$HOME/.local/bin:$PATH"
+
 # Copy all your project files into the image.
 COPY --chown=user:user . .
 
 # Install Python requirements. This will be the longest step.
-# It runs as the non-root user.
+# The warnings you saw should now be gone.
 RUN pip install --no-cache-dir --user -r requirements.txt
-
-# IMPORTANT: Add the user's local bin directory to the PATH.
-ENV PATH="$HOME/.local/bin:$PATH"
 
 # Install pget utility to the user's local bin directory.
 RUN curl -o /tmp/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" && \
-    mkdir -p $HOME/.local/bin && \
     install /tmp/pget $HOME/.local/bin/ && \
     rm /tmp/pget
 
