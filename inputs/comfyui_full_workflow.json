@@ -37,7 +37,7 @@
   },
   "330": {
     "inputs": {
-      "image": "1.png"
+      "image": "location.png"
     },
     "class_type": "LoadImage",
     "_meta": {
@@ -81,7 +81,7 @@
   },
   "336": {
     "inputs": {
-      "image": "artificialcrafts_30_year_old_man_cheering_white_shirt_and_black_0db8f450-b374-4363-9bfb-f14f8e5594fb.png"
+      "image": "guy.png"
     },
     "class_type": "LoadImage",
     "_meta": {
@@ -112,7 +112,7 @@
   },
   "338": {
     "inputs": {
-      "image": "DSC06381_M_Rework.png"
+      "image": "jersey.png"
     },
     "class_type": "LoadImage",
     "_meta": {
