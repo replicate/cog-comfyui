@@ -11,5 +11,4 @@ docker run -it --rm \
   --jersey_image /inputs/jersey.png \
   --filter_image /inputs/filter.png \
   --location_image /inputs/location.png \
-  --final_output_path /app/final_outputs \
   --s3_url "s3://lbbw-trikot/output/$UUID.png"
