@@ -1,4 +1,5 @@
 ## 2025-06-27
+- [Add ComfyUI-utils-nodes](https://github.com/zhangp365/ComfyUI-utils-nodes) custom node
 
 - [Add ComfyUI-AutoCropFaces](https://github.com/liusida/ComfyUI-AutoCropFaces) custom node
 ## 2025-06-26

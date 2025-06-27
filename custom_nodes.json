@@ -10,5 +10,9 @@
   {
     "repo": "https://github.com/liusida/ComfyUI-AutoCropFaces",
     "commit": "b2139db"
+  },
+  {
+    "repo": "https://github.com/zhangp365/ComfyUI-utils-nodes",
+    "commit": "c0ed806"
   }
 ]

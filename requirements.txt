@@ -72,3 +72,8 @@ replicate
 cog
 loguru
 prettytable
+deepface==0.0.93
+ultralytics
+tf-keras==2.17.0
+google-generativeai>0.4.1
+volcengine
