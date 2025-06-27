@@ -40,7 +40,7 @@ COPY . .
 # 6. Pre-install all custom nodes.
 RUN python scripts/install_custom_nodes.py
 
-# 7. Make the entrypoint script executable.
+# 7. Make the entrypoint script executable
 RUN chmod +x scripts/run.sh
 
 # 8. Define the entrypoint for the container.
