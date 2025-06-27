@@ -43,7 +43,7 @@ def main():
         # Prepare Inputs by copying them to the directory ComfyUI is watching.
         # This can now happen after the server starts.
         if args.user_image and args.user_image.exists():
-            shutil.copy(args.user_image, os.path.join(INPUT_DIR, "guy.jpg"))
+            shutil.copy(args.user_image, os.path.join(INPUT_DIR, "guy.png"))
         if args.jersey_image and args.jersey_image.exists():
             shutil.copy(args.jersey_image, os.path.join(INPUT_DIR, "jersey.png"))
         if args.filter_image and args.filter_image.exists():
