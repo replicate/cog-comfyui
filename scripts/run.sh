@@ -1,21 +1,40 @@
 #!/bin/bash
 set -e
 
-HOST_INPUT_DIR="/host_inputs"
-APP_INPUT_DIR="/tmp/inputs"
+# Start the ComfyUI server in the background
+echo "Starting ComfyUI server in CPU mode..."
+python3 /app/ComfyUI/main.py --listen 0.0.0.0 --cpu &
 
-if [ -d "$HOST_INPUT_DIR" ]; then
-  echo "Host inputs found at $HOST_INPUT_DIR. Copying to $APP_INPUT_DIR..."
-  # Create the target directory and then copy the contents
-  mkdir -p "$APP_INPUT_DIR"
-  cp -r $HOST_INPUT_DIR/* "$APP_INPUT_DIR"/
-  echo "Copy complete. Contents of $APP_INPUT_DIR:"
-  ls -l "$APP_INPUT_DIR"
-else
-  echo "No host inputs mounted at $HOST_INPUT_DIR. Proceeding..."
-fi
+# Store the server's process ID
+SERVER_PID=$!
+echo "ComfyUI server started with PID: $SERVER_PID"
 
+# --- NEW: Robust readiness check ---
+echo "Waiting for ComfyUI server to be ready..."
+ATTEMPTS=0
+MAX_ATTEMPTS=60 # Wait for a maximum of 60 seconds
+
+while ! curl -s -o /dev/null "http://127.0.0.1:8188/history/1"; do
+    ATTEMPTS=$((ATTEMPTS + 1))
+    if [ $ATTEMPTS -ge $MAX_ATTEMPTS ]; then
+        echo "ComfyUI server failed to start within $MAX_ATTEMPTS seconds."
+        # Optional: Print server logs for debugging
+        # tail -n 50 /path/to/comfyui/server.log 
+        kill $SERVER_PID
+        exit 1
+    fi
+    sleep 1
+done
+
+echo "ComfyUI server is ready."
+# --- End of readiness check ---
+
+# Execute the Python prediction script
 echo "Running prediction script..."
 python3 /app/predict.py "$@"
 
-echo "Prediction script finished."
+# Shut down the server
+echo "Prediction finished. Shutting down ComfyUI server..."
+kill $SERVER_PID
+wait $SERVER_PID
+echo "Server shut down."
