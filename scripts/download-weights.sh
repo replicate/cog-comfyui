@@ -8,6 +8,10 @@ echo "--- Pre-warming model caches ---"
 mkdir -p /app/ComfyUI/models/BiRefNet
 mkdir -p /root/.cache/torch/hub/checkpoints/
 
+# Download SDXL-Flash Model
+echo "Downloading SDXL-Flash.safetensors..."
+pget -xf "https://weights.replicate.delivery/default/comfy-ui/checkpoints/SDXL-Flash.safetensors.tar" /app/ComfyUI/models/checkpoints/
+
 # Download BiRefNet Models
 echo "Downloading BiRefNet models..."
 pget -xf "https://weights.replicate.delivery/default/comfy-ui/BiRefNet/swin_large_patch4_window12_384_22kto1k.pth.tar" /app/ComfyUI/models/BiRefNet/
