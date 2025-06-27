@@ -37,7 +37,7 @@ RUN chmod +x scripts/download-weights.sh && ./scripts/download-weights.sh
 # 5. Now copy the rest of your application code. Changes here won't trigger re-downloads.
 COPY . .
 
-# 6. Pre-install all custom nodes
+# 6. Pre-install all custom nodes.
 RUN python scripts/install_custom_nodes.py
 
 # 7. Make the entrypoint script executable.
