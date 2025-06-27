@@ -1,4 +1,4 @@
-# predict.py (All-in-One Version)
+# predict.py (Final Version with Verification)
 
 import os
 import shutil
@@ -20,9 +20,13 @@ def main():
     # --- 1. Parse Command-Line Arguments ---
     parser = argparse.ArgumentParser(description="Run a ComfyUI workflow from the command line.")
     parser.add_argument("--workflow_json", type=str, required=True)
-    parser.add_argument("--user_image", type=Path, required=True)
-    parser.add_argument("--jersey_image", type=Path, required=True)
-    parser.add_argument("--filter_image", type=Path, required=True)
+    
+    # Arguments for your specific workflow
+    parser.add_argument("--user_image", type=Path, required=False, help="Path to the user's image inside the container.")
+    parser.add_argument("--jersey_image", type=Path, required=False, help="Path to the jersey image inside the container.")
+    parser.add_argument("--filter_image", type=Path, required=False, help="Path to the fallback/filter image inside the container.")
+    
+    # General output arguments
     parser.add_argument("--output_format", type=str, default="webp")
     parser.add_argument("--output_quality", type=int, default=80)
     parser.add_argument("--final_output_path", type=str, default="/app/final_outputs")
@@ -30,8 +34,7 @@ def main():
 
     # --- 2. Start ComfyUI Server in the Background ---
     server_command = [
-        "python3",
-        "/app/ComfyUI/main.py",
+        "python3", "/app/ComfyUI/main.py",
         "--listen", "0.0.0.0",
         "--cpu",
         "--output-directory", OUTPUT_DIR,
@@ -40,7 +43,6 @@ def main():
     ]
     
     print("Starting ComfyUI server...")
-    # Use Popen to run the server as a background process
     server_process = subprocess.Popen(server_command)
     print(f"ComfyUI server started with PID: {server_process.pid}")
 
@@ -49,28 +51,38 @@ def main():
     is_ready = False
     max_retries = 60
     for i in range(max_retries):
-        print(f"Waiting for server, attempt {i+1}/{max_retries}...")
         if comfyUI.is_server_running():
             is_ready = True
             print("ComfyUI server is ready.")
             break
+        print(f"Waiting for server, attempt {i+1}/{max_retries}...")
         time.sleep(1)
     
     if not is_ready:
         print("Error: ComfyUI server failed to start.")
-        server_process.terminate() # Try to clean up
+        server_process.terminate()
         server_process.wait()
         sys.exit(1)
-
-    # --- 4. Main Application Logic ---
+        
+    # --- 4. Main Application Logic inside a try...finally block ---
     try:
         # Clean directories (after server is up, to be safe)
         comfyUI.cleanup(ALL_DIRECTORIES)
 
-        # Prepare Inputs
-        shutil.copy(args.user_image, os.path.join(INPUT_DIR, "guy.jpg"))
-        shutil.copy(args.jersey_image, os.path.join(INPUT_DIR, "jersey.png"))
-        shutil.copy(args.filter_image, os.path.join(INPUT_DIR, "filter.png"))
+        # Prepare Inputs if they were provided
+        # This copies files from their mounted location to the INPUT_DIR that ComfyUI is configured to use.
+        if args.user_image and args.user_image.exists():
+            shutil.copy(args.user_image, os.path.join(INPUT_DIR, "guy.jpg"))
+        if args.jersey_image and args.jersey_image.exists():
+            shutil.copy(args.jersey_image, os.path.join(INPUT_DIR, "jersey.png"))
+        if args.filter_image and args.filter_image.exists():
+            shutil.copy(args.filter_image, os.path.join(INPUT_DIR, "filter.png"))
+        
+        print("====================================")
+        print(f"Inputs prepared in {INPUT_DIR}:")
+        for f in os.listdir(INPUT_DIR):
+            print(f"- {f}")
+        print("====================================")
 
         # Load and Run Workflow
         workflow = json.loads(args.workflow_json)
@@ -94,11 +106,25 @@ def main():
                 shutil.copy(file_path, final_output_dir)
                 print(f"Copied {file_path.name} to {final_output_dir}")
 
+        # --- VERIFICATION STEP ---
+        print("\n--- Verifying final outputs on volume ---")
+        if os.path.exists(args.final_output_path) and os.path.isdir(args.final_output_path):
+            final_files = os.listdir(args.final_output_path)
+            if final_files:
+                print(f"Successfully found {len(final_files)} file(s) in {args.final_output_path}:")
+                for f in final_files:
+                    print(f"- {f}")
+            else:
+                print(f"Warning: Final output directory {args.final_output_path} is empty.")
+        else:
+            print(f"Error: Final output directory {args.final_output_path} does not exist.")
+        # --- END VERIFICATION STEP ---
+
         print("\nPrediction successful.")
 
     finally:
-        # --- 5. Ensure Server is Shut Down ---
-        print("Prediction finished. Shutting down ComfyUI server...")
+        # --- 5. Ensure Server is Always Shut Down ---
+        print("Prediction process finished. Shutting down ComfyUI server...")
         server_process.terminate()
         server_process.wait()
         print("Server shut down.")
