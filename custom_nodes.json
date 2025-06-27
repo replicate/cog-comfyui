@@ -12,10 +12,6 @@
     "commit": "b2139db"
   },
   {
-    "repo": "https://github.com/zhangp365/ComfyUI-utils-nodes",
-    "commit": "c0ed806"
-  },
-  {
     "repo": "https://github.com/trumanwong/ComfyUI-NSFW-Detection",
     "commit": "1f91d4c"
   }
