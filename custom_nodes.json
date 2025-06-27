@@ -6,5 +6,9 @@
   {
     "repo": "https://github.com/artificialcrafts/ComfyUI-BiRefNet-ZHO",
     "commit": "cb37936"
+  },
+  {
+    "repo": "https://github.com/liusida/ComfyUI-AutoCropFaces",
+    "commit": "b2139db"
   }
 ]

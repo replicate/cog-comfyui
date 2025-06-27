@@ -1,3 +1,6 @@
+## 2025-06-27
+
+- [Add ComfyUI-AutoCropFaces](https://github.com/liusida/ComfyUI-AutoCropFaces) custom node
 ## 2025-06-26
 - [Add ComfyUI-BiRefNet-ZHO](https://github.com/artificialcrafts/ComfyUI-BiRefNet-ZHO) custom node
 - [Add ComfyUI-BiRefNet](https://github.com/viperyl/ComfyUI-BiRefNet) custom node
