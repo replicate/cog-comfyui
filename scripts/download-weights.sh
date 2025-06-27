@@ -4,6 +4,7 @@ set -e
 echo "--- Pre-warming model caches ---"
 
 # Create target directories
+# The -p flag ensures that parent directories are created if they don't exist.
 mkdir -p /app/ComfyUI/models/BiRefNet
 mkdir -p /root/.cache/torch/hub/checkpoints/
 
