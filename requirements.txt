@@ -67,3 +67,7 @@ huggingface_hub[hf-transfer]
 iopath
 jax>=0.4.28
 gguf
+simpleeval
+sageattention
+pypng
+alembic
