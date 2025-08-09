@@ -3,7 +3,7 @@ torchvision
 torchaudio
 torchsde
 einops
-transformers>=4.49.0
+transformers>=4.49.0,<=4.53.3
 tokenizers>=0.13.3
 sentencepiece
 safetensors>=0.3.0
@@ -65,3 +65,5 @@ open-clip-torch>=2.24.0
 pytorch-lightning>=2.2.1
 huggingface_hub[hf-transfer]
 iopath
+jax>=0.4.28
+gguf
