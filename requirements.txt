@@ -50,7 +50,6 @@ numpy>=1.25.0
 scikit-image
 python-dateutil
 mediapipe
-svglib==1.5.1
 fvcore
 yapf
 omegaconf
@@ -62,9 +61,10 @@ librosa
 color-matcher
 facexlib
 open-clip-torch>=2.24.0
-pytorch-lightning>=2.2.1
+pytorch-lightning>=2.5.5
 huggingface_hub[hf-transfer]
 iopath
 alembic
 SQLAlchemy
 yarl>=1.18.0
+gguf

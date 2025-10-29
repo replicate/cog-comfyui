@@ -1,6 +1,31 @@
 ## 2025-10-29
 
 - [Update ComfyUI to latest](https://github.com/comfyanonymous/ComfyUI/compare/5d4cc3b...e525673)
+- [Updated ComfyUI-WanVideoWrapper](https://github.com/kijai/ComfyUI-WanVideoWrapper/compare/998a69c...a64f115)
+- [Updated ComfyUI-LTXVideo](https://github.com/Lightricks/ComfyUI-LTXVideo/compare/36fdaf5...445e087)
+- [Updated ComfyUI-InstantX-IPAdapter-SD3](https://github.com/Slickytail/ComfyUI-InstantX-IPAdapter-SD3/compare/35eafa9...9f9a9a8)
+- [Updated Comfy-WaveSpeed](https://github.com/chengzeyi/Comfy-WaveSpeed/compare/16ec6f3...8253745)
+- [Updated ComfyUI-GlifNodes](https://github.com/glifxyz/ComfyUI-GlifNodes/compare/b86352c...503d6d5)
+- [Updated ComfyUI-segment-anything-2](https://github.com/kijai/ComfyUI-segment-anything-2/compare/c59676b...0c35fff)
+- [Updated ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2/compare/de485b6...00b6338)
+- [Updated ComfyUI-HunyuanVideoWrapper](https://github.com/kijai/ComfyUI-HunyuanVideoWrapper/compare/3ce9640...fcbd672)
+- [Updated MistoControlNet-Flux-dev](https://github.com/TheMistoAI/MistoControlNet-Flux-dev/compare/79e3982...1293188)
+- [Updated comfyui-inpaint-nodes](https://github.com/Acly/comfyui-inpaint-nodes/compare/726e16f...1e2543e)
+- [Updated ComfyUI-SUPIR](https://github.com/kijai/ComfyUI-SUPIR/compare/6fe7a3f...c5cb1ce)
+- [Updated rgthree-comfy](https://github.com/rgthree/rgthree-comfy/compare/944d535...2b9eb36)
+- [Updated ComfyUI-Anyline](https://github.com/TheMistoAI/ComfyUI-Anyline/compare/1ec3d61...40d7b29)
+- [Updated ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes/compare/a6b867b...5dacc97)
+- [Updated ComfyUI-ReActor](https://github.com/Gourieff/ComfyUI-ReActor/compare/d901609...d93450b)
+- [Updated ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts/compare/aac13aa...f2838ed)
+- [Updated ComfyUI_UltimateSDUpscale](https://github.com/ssitu/ComfyUI_UltimateSDUpscale/compare/627c871...871c7cb)
+- [Updated ComfyUI_tinyterraNodes](https://github.com/TinyTerra/ComfyUI_tinyterraNodes/compare/c669e6c...1a90e43)
+- [Updated ComfyUI-Advanced-ControlNet](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet/compare/da254b7...2bde95a)
+- [Updated ComfyUI-VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite/compare/330bce6...8550981)
+- [Updated ComfyUI-AnimateDiff-Evolved](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved/compare/a34036b...90fb133)
+- [Updated comfyui-tooling-nodes](https://github.com/Acly/comfyui-tooling-nodes/compare/5ef2fdd...a088a2d)
+- [Updated ComfyUI-Inspire-Pack](https://github.com/ltdrdata/ComfyUI-Inspire-Pack/compare/0422377...9c875a7)
+- [Updated comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux/compare/59b027e...12f3564)
+
 ## 2025-07-28
 
 Wan 2.2 weights:
