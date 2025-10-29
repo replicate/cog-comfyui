@@ -1,4 +1,4 @@
-torch
+torch==2.7.1
 torchvision
 torchaudio
 torchsde
@@ -50,7 +50,7 @@ numpy
 scikit-image
 python-dateutil
 mediapipe
-svglib
+svglib==1.5.1
 fvcore
 yapf
 omegaconf
