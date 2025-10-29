@@ -1,3 +1,6 @@
+## 2025-10-29
+
+- [Update ComfyUI to latest](https://github.com/comfyanonymous/ComfyUI/compare/5d4cc3b...e525673)
 ## 2025-07-28
 
 Wan 2.2 weights:
