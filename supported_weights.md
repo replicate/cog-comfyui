@@ -174,6 +174,7 @@
 
 ## Text Encoders
 
+- byt5_small_glyphxl_fp16.safetensors
 - clip_g_hidream.safetensors
 - clip_l_hidream.safetensors
 - gemma_2_2b_fp16.safetensors
@@ -181,6 +182,7 @@
 - llava_llama3_fp16.safetensors
 - llava_llama3_fp8_scaled.safetensors
 - oldt5_xxl_fp8_e4m3fn_scaled.safetensors
+- qwen_2.5_vl_7b.safetensors
 - qwen_2.5_vl_7b_fp8_scaled.safetensors
 - umt5_xxl_fp16.safetensors
 - umt5_xxl_fp8_e4m3fn_scaled.safetensors
@@ -557,6 +559,8 @@
 
 - ae.safetensors (Also available as ae.sft)
 - cosmos_cv8x8x8_1.0.safetensors
+- hunyuan_image_2.1_vae_fp16.safetensors
+- hunyuan_image_refiner_vae_fp16.safetensors
 - hunyuan_video_vae_bf16.safetensors
 - mochi/mochi_preview_vae_bf16.safetensors
 - mochi_vae.safetensors
@@ -590,6 +594,12 @@
 - hidream_i1_full_fp8.safetensors
 - hunyuan_video_720_fp8_e4m3fn.safetensors
 - hunyuan_video_image_to_video_720p_bf16.safetensors (Also available as hunyuan_video_v2_replace_image_to_video_720p_bf16.safetensors)
+- hunyuanimage2.1_bf16.safetensors
+- hunyuanimage2.1_distilled_bf16.safetensors
+- hunyuanimage2.1_distilled_fp8_e4m3fn.safetensors
+- hunyuanimage2.1_fp8_e4m3fn.safetensors
+- hunyuanimage2.1_refiner_bf16.safetensors
+- hunyuanimage2.1_refiner_fp8_e4m3fn.safetensors
 - mochi/mochi_preview_dit_fp8_e4m3fn.safetensors
 - mochi_preview_bf16.safetensors
 - mochi_preview_fp8_scaled.safetensors
