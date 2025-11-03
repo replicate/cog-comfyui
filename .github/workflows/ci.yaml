@@ -3,6 +3,10 @@ name: Push
 on:
   workflow_dispatch:
     inputs:
+      ignore_schema_checks:
+        description: 'Ignore schema compatibility checks'
+        type: boolean
+        default: false
       cog_version:
         description: 'Cog version to use (eg latest, v0.14.11)'
         type: string
@@ -47,4 +51,4 @@ jobs:
       env:
         REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
       run: |
-        cog-safe-push --config cog-safe-push-configs/default.yaml -vv
+        cog-safe-push --config cog-safe-push-configs/default.yaml -vv ${{ inputs.ignore_schema_checks && '--ignore-schema-compatibility' || '' }}

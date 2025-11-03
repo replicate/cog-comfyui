@@ -1,4 +1,4 @@
-torch
+torch==2.7.1
 torchvision
 torchaudio
 torchsde
@@ -6,8 +6,8 @@ einops
 transformers>=4.49.0
 tokenizers>=0.13.3
 sentencepiece
-safetensors>=0.3.0
-aiohttp
+safetensors>=0.4.2
+aiohttp>=3.11.8
 accelerate>=1.1.1
 pyyaml
 Pillow
@@ -20,8 +20,8 @@ kornia>=0.7.1
 websocket-client==1.6.3
 diffusers>=0.31.0
 av>=14.2.0
-comfyui-frontend-package==1.23.4
-comfyui-workflow-templates==0.1.41
+comfyui-frontend-package==1.28.8
+comfyui-workflow-templates==0.2.4
 dill
 webcolors
 albumentations
@@ -46,11 +46,10 @@ timm
 importlib_metadata
 opencv-python-headless>=4.0.1.24
 filelock
-numpy
+numpy>=1.25.0
 scikit-image
 python-dateutil
 mediapipe
-svglib
 fvcore
 yapf
 omegaconf
@@ -62,6 +61,10 @@ librosa
 color-matcher
 facexlib
 open-clip-torch>=2.24.0
-pytorch-lightning>=2.2.1
+pytorch-lightning>=2.5.5
 huggingface_hub[hf-transfer]
 iopath
+alembic
+SQLAlchemy
+yarl>=1.18.0
+gguf

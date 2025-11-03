@@ -16,3 +16,4 @@ manifest.txt
 updated_weights.json
 downloaded_user_models/
 .cog
+run_default_workflows.log

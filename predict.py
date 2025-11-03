@@ -15,6 +15,7 @@ import requests
 
 os.environ["DOWNLOAD_LATEST_WEIGHTS_MANIFEST"] = "true"
 os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
+os.environ["YOLO_CONFIG_DIR"] = "/tmp/Ultralytics"
 
 mimetypes.add_type("image/webp", ".webp")
 mimetypes.add_type("video/webm", ".webm")
@@ -35,6 +36,10 @@ class Predictor(BasePredictor):
     def setup(self, weights: str):
         if bool(weights):
             self.handle_user_weights(weights)
+
+        for directory in ALL_DIRECTORIES:
+            os.makedirs(directory, exist_ok=True)
+        os.makedirs(os.environ.get("YOLO_CONFIG_DIR", "/tmp/Ultralytics"), exist_ok=True)
 
         self.comfyUI = ComfyUI("127.0.0.1:8188")
         self.comfyUI.start_server(OUTPUT_DIR, INPUT_DIR)
@@ -116,7 +121,8 @@ class Predictor(BasePredictor):
             default="",
         ),
         input_file: Optional[Path] = Input(
-            description="Input image, video, tar or zip file. Read guidance on workflows and input files here: https://github.com/replicate/cog-comfyui. Alternatively, you can replace inputs with URLs in your JSON workflow and the model will download them."
+            description="Input image, video, tar or zip file. Read guidance on workflows and input files here: https://github.com/replicate/cog-comfyui. Alternatively, you can replace inputs with URLs in your JSON workflow and the model will download them.",
+            default=None,
         ),
         return_temp_files: bool = Input(
             description="Return any temporary files, such as preprocessed controlnet images. Useful for debugging.",
