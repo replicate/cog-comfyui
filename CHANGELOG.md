@@ -1,3 +1,11 @@
+## 2025-11-03
+
+- [Updated ComfyUI-WanVideoWrapper](https://github.com/kijai/ComfyUI-WanVideoWrapper/compare/a64f115...8ce6916)
+- [Updated ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes/compare/5dacc97...6c996e1)
+- [Updated ComfyUI_UltimateSDUpscale](https://github.com/ssitu/ComfyUI_UltimateSDUpscale/compare/871c7cb...c48d60d)
+- [Updated ComfyUI-VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite/compare/8550981...8923bd8)
+- [Updated comfyui-tooling-nodes](https://github.com/Acly/comfyui-tooling-nodes/compare/a088a2d...75c632d)
+
 ## 2025-10-29
 
 - [Update ComfyUI to latest](https://github.com/comfyanonymous/ComfyUI/compare/5d4cc3b...e525673)
