@@ -15,6 +15,7 @@ import requests
 
 os.environ["DOWNLOAD_LATEST_WEIGHTS_MANIFEST"] = "true"
 os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
+os.environ["YOLO_CONFIG_DIR"] = "/tmp/Ultralytics"
 
 mimetypes.add_type("image/webp", ".webp")
 mimetypes.add_type("video/webm", ".webm")
@@ -38,6 +39,7 @@ class Predictor(BasePredictor):
 
         for directory in ALL_DIRECTORIES:
             os.makedirs(directory, exist_ok=True)
+        os.makedirs(os.environ.get("YOLO_CONFIG_DIR", "/tmp/Ultralytics"), exist_ok=True)
 
         self.comfyUI = ComfyUI("127.0.0.1:8188")
         self.comfyUI.start_server(OUTPUT_DIR, INPUT_DIR)
