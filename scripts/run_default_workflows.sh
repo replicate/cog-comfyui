@@ -23,30 +23,56 @@ fi
 # Start fresh log
 echo "# run_default_workflows: $(date -u +"%Y-%m-%dT%H:%M:%SZ")" > "$LOG_FILE"
 
-# Extract workflow_json URLs (ignore commented lines)
-mapfile -t WORKFLOWS < <(grep -E '^[[:space:]]*workflow_json:[[:space:]]*https?://' "$DEFAULT_YAML" | sed -E 's/^[[:space:]]*workflow_json:[[:space:]]*//')
+# Extract (url, expected_error) pairs from YAML (ignore commented lines)
+declare -a ITEMS=()
+expected=""
+while IFS= read -r line; do
+  # Skip commented lines
+  [[ "$line" =~ ^[[:space:]]*# ]] && continue
+  if [[ "$line" =~ ^[[:space:]]*-[[:space:]]*error_contains:[[:space:]]*"?(.*)"?[[:space:]]*$ ]]; then
+    expected="${BASH_REMATCH[1]}"
+    continue
+  fi
+  if [[ "$line" =~ ^[[:space:]]*workflow_json:[[:space:]]*(https?://.*)$ ]]; then
+    url="${BASH_REMATCH[1]}"
+    ITEMS+=("${url}||||${expected}")
+    expected=""
+  fi
+done < "$DEFAULT_YAML"
 
-if [ ${#WORKFLOWS[@]} -eq 0 ]; then
-  echo "No workflow_json URLs found in $DEFAULT_YAML" >&2
+if [ ${#ITEMS[@]} -eq 0 ]; then
+  echo "No workflow_json entries found in $DEFAULT_YAML" >&2
   exit 1
 fi
 
-echo "Found ${#WORKFLOWS[@]} workflows. Running sequentially..."
+echo "Found ${#ITEMS[@]} workflows. Running sequentially..."
 
 idx=0
-for url in "${WORKFLOWS[@]}"; do
+for item in "${ITEMS[@]}"; do
   idx=$((idx+1))
-  echo "[$idx/${#WORKFLOWS[@]}] Running: $url"
+  IFS='||||' read -r url expected_error <<< "$item"
+  echo "[$idx/${#ITEMS[@]}] Running: $url"
 
-  # Run prediction. Capture output; on error, append to log and continue.
+  output=""
   if ! output=$(cog predict -i workflow_json="$url" -i return_temp_files=true 2>&1); then
+    if [ -n "$expected_error" ] && echo "$output" | grep -q "$expected_error"; then
+      echo "[EXPECTED ERROR] $url"
+      echo "[EXPECTED ERROR] $url" >> "$LOG_FILE"
+      echo "$output" >> "$LOG_FILE"
+      echo "--" >> "$LOG_FILE"
+      continue
+    fi
     echo "[ERROR] $url" | tee -a "$LOG_FILE" >&2
     echo "$output" >> "$LOG_FILE"
     echo "--" >> "$LOG_FILE"
     continue
+  else
+    if [ -n "$expected_error" ]; then
+      echo "[UNEXPECTED SUCCESS] $url (expected error containing: $expected_error)" | tee -a "$LOG_FILE"
+      continue
+    fi
   fi
 
-  # Optionally print minimal success info
   echo "[OK] $url"
 done
 
