@@ -53,8 +53,19 @@ for item in "${ITEMS[@]}"; do
   IFS='||||' read -r url expected_error <<< "$item"
   echo "[$idx/${#ITEMS[@]}] Running: $url"
 
+  # Prefer local file if URL points to this repo's examples
+  wf_arg="workflow_json=$url"
+  if [[ "$url" =~ ^https://raw.githubusercontent.com/.*/examples/api_workflows/(.*\.json)$ ]]; then
+    rel_path="${BASH_REMATCH[1]}"
+    local_path="$ROOT_DIR/examples/api_workflows/$rel_path"
+    if [ -f "$local_path" ]; then
+      echo "Using local file: $local_path"
+      wf_arg="workflow_json=@$local_path"
+    fi
+  fi
+
   output=""
-  if ! output=$(cog predict -i workflow_json="$url" -i return_temp_files=true 2>&1); then
+  if ! output=$(cog predict -i "$wf_arg" -i return_temp_files=true 2>&1); then
     if [ -n "$expected_error" ] && echo "$output" | grep -q "$expected_error"; then
       echo "[EXPECTED ERROR] $url"
       echo "[EXPECTED ERROR] $url" >> "$LOG_FILE"
