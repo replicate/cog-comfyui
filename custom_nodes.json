@@ -202,8 +202,9 @@
     "commit": "17c71be"
   },
   {
-    "repo": "https://github.com/lldacing/ComfyUI_PuLID_Flux_ll",
-    "commit": "ba90657"
+    "repo": "https://github.com/fofr/ComfyUI_PuLID_Flux_ll",
+    "commit": "4cd058f",
+    "notes": "Fork of https://github.com/lldacing/ComfyUI_PuLID_Flux_ll which fixes latent shapes error in newer versions of ComfyUI: https://github.com/lldacing/ComfyUI_PuLID_Flux_ll/issues/86"
   },
   {
     "repo": "https://github.com/kijai/ComfyUI-HunyuanVideoWrapper",
