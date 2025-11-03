@@ -1,5 +1,18 @@
 ## 2025-11-03
 
+Add support for HunyuanImage 2.1:
+
+- [hunyuanimage2.1_refiner_fp8_e4m3fn.safetensors (diffusion_models)](https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/blob/main/split_files/diffusion_models/hunyuanimage2.1_refiner_fp8_e4m3fn.safetensors)
+- [hunyuanimage2.1_refiner_bf16.safetensors (diffusion_models)](https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/blob/main/split_files/diffusion_models/hunyuanimage2.1_refiner_bf16.safetensors)
+- [hunyuanimage2.1_fp8_e4m3fn.safetensors (diffusion_models)](https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/blob/main/split_files/diffusion_models/hunyuanimage2.1_fp8_e4m3fn.safetensors)
+- [hunyuanimage2.1_distilled_fp8_e4m3fn.safetensors (diffusion_models)](https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/blob/main/split_files/diffusion_models/hunyuanimage2.1_distilled_fp8_e4m3fn.safetensors)
+- [hunyuanimage2.1_distilled_bf16.safetensors (diffusion_models)](https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/blob/main/split_files/diffusion_models/hunyuanimage2.1_distilled_bf16.safetensors)
+- [hunyuanimage2.1_bf16.safetensors (diffusion_models)](https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/blob/main/split_files/diffusion_models/hunyuanimage2.1_bf16.safetensors)
+- [hunyuan_image_refiner_vae_fp16.safetensors (vae)](https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/blob/main/split_files/vae/hunyuan_image_refiner_vae_fp16.safetensors)
+- [hunyuan_image_2.1_vae_fp16.safetensors (vae)](https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/blob/main/split_files/vae/hunyuan_image_2.1_vae_fp16.safetensors)
+- [qwen_2.5_vl_7b.safetensors (text_encoders)](https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/blob/main/split_files/text_encoders/qwen_2.5_vl_7b.safetensors)
+- [byt5_small_glyphxl_fp16.safetensors (text_encoders)](https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/blob/main/split_files/text_encoders/byt5_small_glyphxl_fp16.safetensors)
+
 Add support for Qwen-Image and Qwen-Image-Edit:
 
 - [qwen_image_vae.safetensors (vae)](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/vae/qwen_image_vae.safetensors)
