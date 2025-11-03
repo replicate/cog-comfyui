@@ -116,6 +116,19 @@ Both methods work the same way - the standard LoraLoader will automatically swit
 
 With all your inputs updated, you can now run your workflow.
 
+Example:
+
+```sh
+# Pass in the workflow JSON as a string
+cog predict -i workflow_json="{ ... }"
+
+# Pass in the workflow JSON as a URL
+cog predict -i workflow_json="https://example.com/your_workflow.json"
+
+# Pass in the workflow JSON as a file
+cog predict -i workflow_json=@your_workflow.json
+```
+
 Some workflows save temporary files, for example pre-processed controlnet images. You can also return these by enabling the `return_temp_files` option.
 
 ## How to use your own dedicated instance

@@ -181,6 +181,7 @@
 - llava_llama3_fp16.safetensors
 - llava_llama3_fp8_scaled.safetensors
 - oldt5_xxl_fp8_e4m3fn_scaled.safetensors
+- qwen_2.5_vl_7b_fp8_scaled.safetensors
 - umt5_xxl_fp16.safetensors
 - umt5_xxl_fp8_e4m3fn_scaled.safetensors
 - ViT-L-14-TEXT-detail-improved-hiT-GmP-HF.safetensors
@@ -559,6 +560,7 @@
 - hunyuan_video_vae_bf16.safetensors
 - mochi/mochi_preview_vae_bf16.safetensors
 - mochi_vae.safetensors
+- qwen_image_vae.safetensors
 - sd3_medium_vae.fp16.safetensors
 - sdxl_vae.safetensors
 - stable-cascade/effnet_encoder.safetensors
@@ -596,6 +598,10 @@
 - Phantom-Wan-1_3B_fp16.safetensors
 - Phantom-Wan-1_3B_fp32.safetensors
 - pixelwave_flux1Dev03.safetensors
+- qwen_image_bf16.safetensors
+- qwen_image_edit_2509_fp8_e4m3fn.safetensors
+- qwen_image_edit_fp8_e4m3fn.safetensors
+- qwen_image_fp8_e4m3fn.safetensors
 - Wan2.1-Fun-Control-14B_fp8_e4m3fn.safetensors
 - Wan2.1-Fun-Control-14B_fp8_e5m2.safetensors
 - Wan2.1-Fun-InP-14B_fp8_e4m3fn.safetensors

@@ -154,7 +154,7 @@ def download_file(url, filename=None, civitai_api_token=None, hf_cli_download=Fa
             token = huggingface_read_token if huggingface_read_token else None
             subprocess.run(
                 [
-                    "huggingface-cli",
+                    "hf",
                     "download",
                     repo_id,
                     "/".join(filename_and_path),
@@ -211,7 +211,7 @@ def upload_to_huggingface(local_file, subfolder):
     print(f"Uploading {local_file} to huggingface under {subfolder}")
     subprocess.run(
         [
-            "huggingface-cli",
+            "hf",
             "upload",
             "fofr/comfyui",
             local_file,
