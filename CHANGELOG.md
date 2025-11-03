@@ -1169,7 +1169,7 @@ New weights:
 
 Visit the `train` tab on Replicate to create a new version of this model with your own weights:
 
-https://replicate.com/fofr/any-comfyui-workflow/train
+https://replicate.com/comfyui/any-comfyui-workflow/train
 
 Here you can give public or private URLs to weights on HuggingFace and CivitAI. If URLs are private or need authentication, make sure to include an API key or access token.
 

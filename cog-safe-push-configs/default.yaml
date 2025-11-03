@@ -1,8 +1,8 @@
 # Live model
-model: fofr/any-comfyui-workflow
+model: comfyui/any-comfyui-workflow
 
 # A private model to run the test against before pushing
-test_model: fofr/any-comfyui-workflow-staging
+test_model: comfyui/any-comfyui-workflow-staging
 test_hardware: gpu-l40s
 
 # Tests

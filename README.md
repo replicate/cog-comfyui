@@ -2,8 +2,8 @@
 
 Run ComfyUI workflows on Replicate:
 
-- https://replicate.com/fofr/any-comfyui-workflow
-- https://replicate.com/fofr/any-comfyui-workflow-a100
+- https://replicate.com/comfyui/any-comfyui-workflow
+- https://replicate.com/comfyui/any-comfyui-workflow-a100
 
 We recommend:
 
@@ -144,7 +144,7 @@ Go to:
 
 https://replicate.com/deployments/create
 
-Select `fofr/any-comfyui-workflow` as the model you'd like to deploy. Pick your hardware and min and max instances, and you're ready to go. You'll be pinned to the version you deploy from. When `any-comfyui-workflow` is updated, you can test your workflow with it, and then deploy again using the new version.
+Select `comfyui/any-comfyui-workflow` as the model you'd like to deploy. Pick your hardware and min and max instances, and you're ready to go. You'll be pinned to the version you deploy from. When `any-comfyui-workflow` is updated, you can test your workflow with it, and then deploy again using the new version.
 
 You can read more about deployments in the Replicate docs:
 
@@ -178,7 +178,7 @@ It was created from this repo, and then deployed using Cog. You can step through
 
 Visit the train tab on Replicate:
 
-https://replicate.com/fofr/any-comfyui-workflow/train
+https://replicate.com/comfyui/any-comfyui-workflow/train
 
 Here you can give public or private URLs to weights on HuggingFace and CivitAI. If URLs are private or need authentication, make sure to include an API key or access token.
 
