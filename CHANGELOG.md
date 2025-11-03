@@ -33,6 +33,7 @@ Add support for Qwen-Image and Qwen-Image-Edit:
 
 Updated nodes:
 
+- [Updated ComfyUI-RMBG](https://github.com/1038lab/ComfyUI-RMBG/compare/72bc6a5...b28ce10)
 - [Updated ComfyUI-WanVideoWrapper](https://github.com/kijai/ComfyUI-WanVideoWrapper/compare/a64f115...8ce6916)
 - [Updated ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes/compare/5dacc97...6c996e1)
 - [Updated ComfyUI_UltimateSDUpscale](https://github.com/ssitu/ComfyUI_UltimateSDUpscale/compare/871c7cb...c48d60d)
