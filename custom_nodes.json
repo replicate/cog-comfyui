@@ -169,8 +169,9 @@
     "commit": "1e2543e"
   },
   {
-    "repo": "https://github.com/nullquant/ComfyUI-BrushNet",
-    "commit": "505d8ef"
+    "repo": "https://github.com/fofr/ComfyUI-BrushNet",
+    "commit": "7995b13",
+    "notes": "Fork of https://github.com/nullquant/ComfyUI-BrushNet which fixes latent shapes error in newer versions of ComfyUI: https://github.com/nullquant/ComfyUI-BrushNet/issues/202"
   },
   {
     "repo": "https://github.com/fofr/comfyui-fofr-toolkit",
