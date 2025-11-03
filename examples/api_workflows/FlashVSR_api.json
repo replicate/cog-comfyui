@@ -1,0 +1,139 @@
+{
+  "28": {
+    "inputs": {
+      "video_info": [
+        "31",
+        3
+      ]
+    },
+    "class_type": "VHS_VideoInfoSource",
+    "_meta": {
+      "title": "Video Info (Source) 🎥🅥🅗🅢"
+    }
+  },
+  "31": {
+    "inputs": {
+      "video": "https://replicate.delivery/xezq/lZfr3rskBEVLDCytear4lUo92fOpAcoblFWzk6e06WEnC3PTB/tmpny051d_c.mp4",
+      "force_rate": 0,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 0,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "AnimateDiff"
+    },
+    "class_type": "VHS_LoadVideo",
+    "_meta": {
+      "title": "Load Video (Upload) 🎥🅥🅗🅢"
+    }
+  },
+  "33": {
+    "inputs": {
+      "model_version": "Full (Best Quality)",
+      "scale": 2,
+      "enable_tiling": true,
+      "tile_size": 256,
+      "tile_overlap": 24,
+      "speed_optimization": 2,
+      "quality_boost": 2,
+      "stability_level": 11,
+      "color_fix": true,
+      "vae_tiling": true,
+      "unload_model": false,
+      "sageattention": "enable",
+      "device": "auto",
+      "precision": "bf16",
+      "seed": 100,
+      "frames": [
+        "31",
+        0
+      ],
+      "audio": [
+        "31",
+        2
+      ]
+    },
+    "class_type": "AILab_FlashVSR_Advanced",
+    "_meta": {
+      "title": "FlashVSR ⚡ Advanced"
+    }
+  },
+  "39": {
+    "inputs": {
+      "frame_rate": [
+        "28",
+        0
+      ],
+      "loop_count": 0,
+      "filename_prefix": "FlashVSR",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": false,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": false,
+      "images": [
+        "33",
+        0
+      ],
+      "audio": [
+        "33",
+        1
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "40": {
+    "inputs": {
+      "frame_rate": [
+        "28",
+        0
+      ],
+      "loop_count": 0,
+      "filename_prefix": "FlashVSR",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": false,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": false,
+      "images": [
+        "45",
+        0
+      ],
+      "audio": [
+        "45",
+        1
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "45": {
+    "inputs": {
+      "preset": "Fast (2x Speed)",
+      "scale": 4,
+      "unload_model": false,
+      "seed": 100,
+      "frames": [
+        "31",
+        0
+      ],
+      "audio": [
+        "31",
+        2
+      ]
+    },
+    "class_type": "AILab_FlashVSR",
+    "_meta": {
+      "title": "FlashVSR ⚡"
+    }
+  }
+}
