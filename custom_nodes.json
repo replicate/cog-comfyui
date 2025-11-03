@@ -275,5 +275,9 @@
   {
     "repo": "https://github.com/kijai/ComfyUI-WanVideoWrapper",
     "commit": "8ce6916"
+  },
+  {
+    "repo": "https://github.com/1038lab/ComfyUI-FlashVSR",
+    "commit": "545bdaf"
   }
 ]

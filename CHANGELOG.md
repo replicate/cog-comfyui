@@ -1,5 +1,14 @@
 ## 2025-11-03
 
+Add support for FlashVSR:
+
+- [Add ComfyUI-FlashVSR](https://github.com/1038lab/ComfyUI-FlashVSR) custom node
+- [Wan2_1_FlashVSR_TCDecoder_fp32.safetensors (flashvsr)](https://huggingface.co/1038lab/FlashVSR/blob/main/Wan2_1_FlashVSR_TCDecoder_fp32.safetensors)
+- [Wan2_1_FlashVSR_LQ_proj_model_bf16.safetensors (flashvsr)](https://huggingface.co/1038lab/FlashVSR/blob/main/Wan2_1_FlashVSR_LQ_proj_model_bf16.safetensors)
+- [Wan2_1-T2V-1_3B_FlashVSR_fp32.safetensors (flashvsr)](https://huggingface.co/1038lab/FlashVSR/blob/main/Wan2_1-T2V-1_3B_FlashVSR_fp32.safetensors)
+- [Wan2.1_VAE.safetensors (flashvsr)](https://huggingface.co/1038lab/FlashVSR/blob/main/Wan2.1_VAE.safetensors)
+- [Prompt.safetensors (flashvsr)](https://huggingface.co/1038lab/FlashVSR/blob/main/Prompt.safetensors)
+
 Add support for HunyuanImage 2.1:
 
 - [hunyuanimage2.1_refiner_fp8_e4m3fn.safetensors (diffusion_models)](https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/blob/main/split_files/diffusion_models/hunyuanimage2.1_refiner_fp8_e4m3fn.safetensors)
