@@ -51,6 +51,7 @@ def write_supported_weights():
         "Style models": weights_manifest.get_weights_by_type("STYLE_MODELS"),
         "DepthAnything": weights_manifest.get_weights_by_type("DEPTHANYTHING"),
         "FBCNN (Jpeg artifact removal)": weights_manifest.get_weights_by_type("FBCNN"),
+        "FlashVSR": weights_manifest.get_weights_by_type("FLASHVSR"),
         "Anyline": helpers.ComfyUI_Anyline.models(),
         "AnimateDiff": weights_manifest.get_weights_by_type("ANIMATEDIFF_MODELS"),
         "AnimateDiff LORAs": weights_manifest.get_weights_by_type(

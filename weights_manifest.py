@@ -103,6 +103,8 @@ class WeightsManifest:
         def generate_weights_map(keys, directory_name):
             if directory_name == "BIREFNET":
                 directory_name = "BiRefNet"
+            elif directory_name == "FLASHVSR":
+                directory_name = "FlashVSR"
             elif directory_name not in ["LLM", "FBCNN"]:
                 directory_name = directory_name.lower()
 
