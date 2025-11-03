@@ -1,11 +1,13 @@
 ## 2025-11-03
 
-Add support for Qwen-Image:
+Add support for Qwen-Image and Qwen-Image-Edit:
 
 - [qwen_image_vae.safetensors (vae)](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/vae/qwen_image_vae.safetensors)
 - [qwen_2.5_vl_7b_fp8_scaled.safetensors (text_encoders)](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors)
 - [qwen_image_bf16.safetensors (diffusion_models)](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_bf16.safetensors)
 - [qwen_image_fp8_e4m3fn.safetensors (diffusion_models)](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_fp8_e4m3fn.safetensors)
+- [qwen_image_edit_2509_fp8_e4m3fn.safetensors (diffusion_models)](https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_edit_2509_fp8_e4m3fn.safetensors)
+- [qwen_image_edit_fp8_e4m3fn.safetensors (diffusion_models)](https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_edit_fp8_e4m3fn.safetensors)
 
 Updated nodes:
 

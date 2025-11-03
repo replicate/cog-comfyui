@@ -599,6 +599,8 @@
 - Phantom-Wan-1_3B_fp32.safetensors
 - pixelwave_flux1Dev03.safetensors
 - qwen_image_bf16.safetensors
+- qwen_image_edit_2509_fp8_e4m3fn.safetensors
+- qwen_image_edit_fp8_e4m3fn.safetensors
 - qwen_image_fp8_e4m3fn.safetensors
 - Wan2.1-Fun-Control-14B_fp8_e4m3fn.safetensors
 - Wan2.1-Fun-Control-14B_fp8_e5m2.safetensors
