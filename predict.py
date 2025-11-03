@@ -36,6 +36,9 @@ class Predictor(BasePredictor):
         if bool(weights):
             self.handle_user_weights(weights)
 
+        for directory in ALL_DIRECTORIES:
+            os.makedirs(directory, exist_ok=True)
+
         self.comfyUI = ComfyUI("127.0.0.1:8188")
         self.comfyUI.start_server(OUTPUT_DIR, INPUT_DIR)
 
