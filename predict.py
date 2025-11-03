@@ -11,6 +11,7 @@ from weights_downloader import WeightsDownloader
 from cog_model_helpers import optimise_images
 from config import config
 import requests
+import base64
 
 
 os.environ["DOWNLOAD_LATEST_WEIGHTS_MANIFEST"] = "true"
@@ -146,7 +147,14 @@ class Predictor(BasePredictor):
             self.handle_input_file(input_file)
 
         workflow_json_content = workflow_json
-        if workflow_json.startswith(("http://", "https://")):
+        if workflow_json.startswith("data:") and ";base64," in workflow_json:
+            try:
+                base64_part = workflow_json.split(",", 1)[1]
+                decoded_bytes = base64.b64decode(base64_part)
+                workflow_json_content = decoded_bytes.decode("utf-8")
+            except Exception as e:
+                raise ValueError(f"Failed to decode base64 workflow JSON: {e}")
+        elif workflow_json.startswith(("http://", "https://")):
             try:
                 response = requests.get(workflow_json)
                 response.raise_for_status()
